@@ -5,6 +5,10 @@ namespace MMA.DAL.Common
 {
     public class CommonContext : DbContext
     {
+        public CommonContext() : base("DbConnection")
+        {
+            
+        }
         public DbSet<User> Users { get; set; }
     }
 }
