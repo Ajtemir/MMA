@@ -8,6 +8,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMA.Domain.Common", "Domain
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTesting", "ConsoleTesting\ConsoleTesting.csproj", "{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{8B0306A7-CAA8-431A-84A3-6E5859A048F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{43F7AA83-8042-4F1D-BC31-116DAE4EA93B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FE80F968-8D8D-4C7D-90CF-616B030D3132}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +36,9 @@ Global
 		{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BA6E6B04-F72B-434A-B867-3243F25B7F15} = {8B0306A7-CAA8-431A-84A3-6E5859A048F2}
+		{BCA3DC7F-6C5F-4B6F-AC1A-6C886A1C96E9} = {43F7AA83-8042-4F1D-BC31-116DAE4EA93B}
 	EndGlobalSection
 EndGlobal
