@@ -12,6 +12,7 @@
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+        <LangVersion>8</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -54,6 +55,10 @@
       <None Include="packages.config" />
     </ItemGroup>
     <ItemGroup>
+      <ProjectReference Include="..\Contract\MMA.Contract.Common\MMA.Contract.Common.csproj">
+        <Project>{af793759-ba8f-40cc-be5a-918c99a9614f}</Project>
+        <Name>MMA.Contract.Common</Name>
+      </ProjectReference>
       <ProjectReference Include="..\DAL\MMA.DAL.Common\MMA.DAL.Common.csproj">
         <Project>{ba6e6b04-f72b-434a-b867-3243f25b7f15}</Project>
         <Name>MMA.DAL.Common</Name>

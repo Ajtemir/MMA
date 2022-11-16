@@ -33,8 +33,11 @@
     </PropertyGroup>
     <ItemGroup>
       <Compile Include="ICommonService.cs" />
+      <Compile Include="ServiceClientFactory.cs" />
     </ItemGroup>
     <ItemGroup>
+      <Reference Include="System" />
+      <Reference Include="System.Configuration" />
       <Reference Include="System.Runtime.Serialization" />
       <Reference Include="System.ServiceModel" />
     </ItemGroup>
