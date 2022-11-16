@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMA.FrontMVC", "MMA.FrontMVC\MMA.FrontMVC.csproj", "{40490526-CEC7-410D-A05E-57486945FD6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMA.DAL.Common", "DAL\MMA.DAL.Common\MMA.DAL.Common.csproj", "{BA6E6B04-F72B-434A-B867-3243F25B7F15}"
@@ -13,6 +16,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{43F7AA83-8042-4F1D-BC31-116DAE4EA93B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{FE80F968-8D8D-4C7D-90CF-616B030D3132}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMA.Services.Common", "Services\MMA.Services.Common\MMA.Services.Common.csproj", "{0F9BDF04-C917-4AF3-AABB-EF886CD09EB6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contract", "Contract", "{563B9F03-7199-4624-A62F-05EC0D047B78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MMA.Contract.Common", "Contract\MMA.Contract.Common\MMA.Contract.Common.csproj", "{AF793759-BA8F-40CC-BE5A-918C99A9614F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,9 +45,25 @@ Global
 		{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDE9CFB1-92D3-4B16-97E1-5A253E3C5BC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F9BDF04-C917-4AF3-AABB-EF886CD09EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F9BDF04-C917-4AF3-AABB-EF886CD09EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F9BDF04-C917-4AF3-AABB-EF886CD09EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F9BDF04-C917-4AF3-AABB-EF886CD09EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF793759-BA8F-40CC-BE5A-918C99A9614F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF793759-BA8F-40CC-BE5A-918C99A9614F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF793759-BA8F-40CC-BE5A-918C99A9614F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF793759-BA8F-40CC-BE5A-918C99A9614F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{BA6E6B04-F72B-434A-B867-3243F25B7F15} = {8B0306A7-CAA8-431A-84A3-6E5859A048F2}
 		{BCA3DC7F-6C5F-4B6F-AC1A-6C886A1C96E9} = {43F7AA83-8042-4F1D-BC31-116DAE4EA93B}
+		{0F9BDF04-C917-4AF3-AABB-EF886CD09EB6} = {FE80F968-8D8D-4C7D-90CF-616B030D3132}
+		{AF793759-BA8F-40CC-BE5A-918C99A9614F} = {563B9F03-7199-4624-A62F-05EC0D047B78}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92095C11-72A1-46ED-8DE9-EC14CF76B41F}
 	EndGlobalSection
 EndGlobal
