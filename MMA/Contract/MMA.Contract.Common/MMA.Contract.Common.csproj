@@ -41,6 +41,12 @@
       <Reference Include="System.Runtime.Serialization" />
       <Reference Include="System.ServiceModel" />
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\MMA.Domain.Common\MMA.Domain.Common.csproj">
+        <Project>{bca3dc7f-6c5f-4b6f-ac1a-6c886a1c96e9}</Project>
+        <Name>MMA.Domain.Common</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.

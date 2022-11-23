@@ -11,8 +11,11 @@ namespace MMA.Domain.Common
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int CustomerId { get; set; }
+        [Required]
         public string Email { get; set; }
         public int? SellerId { get; set; }
         public Seller Seller { get; set; }
+        public int? UserId { get; set; }
+        public User User { get; set; }
     }
 }
