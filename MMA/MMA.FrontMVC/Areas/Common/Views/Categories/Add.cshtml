@@ -1,0 +1,28 @@
+@using System.Collections
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "Add";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<h2>Add</h2>
+<form method="POST" action="@Url.Action("Add", "Categories", new { Area = "Common" })">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Category Name</label>
+      <input required type="text" class="form-control" id="inputEmail4" placeholder="CategoryName" name="CategoryName">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Parent Category Name</label>
+      <select id="inputState" class="form-control" name="ParentCategoryId">
+        <option>Not specified</option>
+        @foreach (var category in (List<Category>)ViewData["Categories"])
+        {
+          <option value="@category.CategoryId">@category.CategoryName</option>
+        }
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+

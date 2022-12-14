@@ -13,10 +13,7 @@ namespace MMA.FrontMVC.Areas.Common.Controllers
         // GET: Common/Users
         public ActionResult Index()
         {
-            var factory = new ServiceClientFactory<ICommonService>();
-            var service = factory.GetService();
-            // var result = service.GetUsers();
-            // return View(result.Entites);
+            var service = new ServiceClientFactory<ICommonService>().GetService();
             var user = service.GetUser();
             return View(new List<User> { user });
         }

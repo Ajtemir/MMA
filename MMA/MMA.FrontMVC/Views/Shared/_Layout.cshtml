@@ -1,9 +1,9 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - MMA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -12,17 +12,28 @@
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar">gfbc</span>
+                <span class="icon-bar">cb</span>
+                <span class="icon-bar">bc</span>
             </button>
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("MMA", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
         </div>
-        <div class="navbar-collapse collapse">
+        <div class="navbar-collapse collapse" style="margin-top: 10px">
             <ul class="nav navbar-nav">
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li>@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                <div class="btn-group">
+                    <button class="btn btn-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Навигационное меню
+                    </button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("Index", "Categories", new { Area = "Common" })">Категории</a>
+                        <hr>
+                        <a class="dropdown-item" href="@Url.Action("Index", "ProductPropertyKeys", new { Area = "Common" })">Ключ свойства продукта</a>
+                        <hr>
+                        <a class="dropdown-item" href="@Url.Action("Index", "ProductPropertyValues", new { Area = "Common" })">Значение ключа свойства</a>
+                        <hr>
+                        <a class="dropdown-item" href="@Url.Action("Index", "Products", new { Area = "Common" })">Продукты</a>
+                    </div>
+                </div>
             </ul>
         </div>
     </div>
@@ -30,9 +41,6 @@
 <div class="container body-content">
     @RenderBody()
     <hr/>
-    <footer>
-        <p>&copy; @DateTime.Now.2022 - My ASP.NET Application</p>
-    </footer>
 </div>
 
 @Scripts.Render("~/bundles/jquery")

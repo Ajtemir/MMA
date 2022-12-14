@@ -1,0 +1,36 @@
+@using System.Activities.Statements
+@using System.Collections
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "Add";
+    Layout = "../Shared/_Layout.cshtml";
+    var current = (Category)ViewData["current"];
+    var categories = (List<Category>)ViewData["categories"];
+}
+
+
+<h2>Update</h2>
+<form method="POST" action="@Url.Action("Update", "Categories", new { Area = "Common" })">
+    <div class="form-row">
+        <input name="CategoryId" value="@current.CategoryId" type="hidden">
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Category Name</label>
+            <input required type="text" class="form-control" id="inputEmail4" placeholder="CategoryName" name="CategoryName" value="@current.CategoryName">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputState">Parent Category Name</label>
+            <select id="inputState" class="form-control" name="ParentCategoryId">
+                <option>Not specified</option>
+                @if (current.ParentCategory != null)
+                {
+                    <option selected value="@current.ParentCategory.CategoryId">@current.ParentCategory.CategoryName</option>
+                }
+                @foreach (var category in categories)
+                {
+                    <option value="@category.CategoryId">@category.CategoryName</option>
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>

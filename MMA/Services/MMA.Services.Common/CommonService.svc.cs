@@ -8,6 +8,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using MMA.Contract.Common;
+using MMA.Contract.Common.Response;
 using MMA.DAL.Common;
 using MMA.Domain.Common;
 
@@ -35,12 +36,12 @@ namespace MMA.Services.Common.CommonService
             return composite;
         }
 
-        public ServiceResult<User> GetUsers()
+        public ServiceResultAll<User> GetUsers()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["DbConnection"].ConnectionString;
             using var context = new CommonContext(connectionString);
             var user = context.Users.ToList();
-            return new ServiceResult<User>{Entites = user};
+            return new ServiceResultAll<User>{Results = user};
         }
     
         
@@ -57,6 +58,38 @@ namespace MMA.Services.Common.CommonService
             {
                 throw new Exception(ex.InnerException?.Message);
             }
+            
+        }
+
+        public ServiceResultAll<Category> GetAllCategories()
+        {
+            try
+            {
+                using var context = new CommonContext();
+                var categories = context.Categories.ToList();
+                return new ServiceResultAll<Category>(categories);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.InnerException?.Message);
+            }
+           
+        }
+
+        public ServiceResult AddCategory(Category category)
+        {
+            try
+            {
+                using var context = new CommonContext();
+                context.Categories.Add(category);
+                context.SaveChanges();
+                return new ServiceResult();
+            }
+            catch (Exception e)
+            {
+                return new ServiceResult(e.Message);
+            }
+            
             
         }
     }

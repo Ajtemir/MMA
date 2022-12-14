@@ -10,7 +10,7 @@ namespace MMA.Contract.Common
     public class ServiceClientFactory<T> : IDisposable
     {
         private ChannelFactory<T> _channelFactory { get; }
-
+        public static T Service() => new ServiceClientFactory<T>().GetService();
         public ServiceClientFactory()
         {
             _channelFactory = CreateChannelFactory();

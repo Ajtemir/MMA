@@ -33,6 +33,9 @@
     </PropertyGroup>
     <ItemGroup>
       <Compile Include="ICommonService.cs" />
+      <Compile Include="Response\ServiceResult.cs" />
+      <Compile Include="Response\ServiceResultAll.cs" />
+      <Compile Include="Response\ServiceResultAlone.cs" />
       <Compile Include="ServiceClientFactory.cs" />
     </ItemGroup>
     <ItemGroup>

@@ -1,0 +1,43 @@
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Index.cshtml";
+    var entities = (List<Product>)ViewData["entities"];
+}
+<div class="mt-4">
+    <a href='@Url.Action("Add", "Products", new {Area = "Common"})'>
+        <button type="button" class="btn btn-primary btn-lg">Add</button>
+    </a>
+</div>
+
+<br>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+      <th scope="row">Id</th>
+      <th scope="row">Description</th>
+      <th scope="row">Price</th>
+      <th scope="row">Category Name</th>
+      <th scope="col" class="text-success">Update</th>
+      <th scope="col" class="text-danger">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach (var entity in entities)
+  {
+      <tr>
+          <th scope="row">@entity.ProductId</th>
+          <th scope="row">@entity.Description</th>
+          <th scope="row">@entity.Price</th>
+          <th scope="row">@entity.Category.CategoryName</th>
+          <td><a href="@Url.Action("Update", "Products", new { Area = "Common", entityId = entity.ProductId })"><button type="button" class="btn btn-success d-inline-block">Update</button></a></td>
+          <td><a href="@Url.Action("Delete", "Products", new { Area = "Common", entityId=entity.ProductId })"><button type="button" class="btn btn-danger d-inline-block">Delete</button></a></td>
+      </tr>
+  }
+  
+  </tbody>
+</table>
+
+
+
+

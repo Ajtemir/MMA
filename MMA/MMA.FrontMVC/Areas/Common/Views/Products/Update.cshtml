@@ -1,0 +1,123 @@
+@using System.Activities.Statements
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "Products";
+    Layout = "~/Views/Shared/_Update.cshtml";
+    var properties = (Dictionary<ProductPropertyKey, ICollection<ProductPropertyValue>>)ViewData["properties"];
+    var current = (Product)ViewData["current"];
+    var selectedProperties = (HashSet<int>)ViewData["selectedProperties"];
+}
+
+
+<form method="@FormMethod.Post" action="@Url.Action("Update", "Products", new { Area = "Common" })">
+    <div class="form-row">
+        <input name="ProductId" value="@current.ProductId" type="hidden">
+        
+        <div class="form-group col-md-6">
+            <label for="inputEmail4">Description</label>
+            <input required type="text" class="form-control" id="inputEmail4" placeholder="Description" name="Description" value="@current.Description">
+        </div>
+        
+        <div class="form-group col-md-6">
+            <label>Price</label>
+            <br>
+            <input class="form-control" type="number" name="Price" min="0" value step=".01">
+        </div>
+        
+        <div class="form-group col-md-6">
+            <label>Category</label>
+            <input hidden name="CategoryId" value="@current.CategoryId">
+            <input type="text" class="form-control" disabled value="@current.Category.CategoryName">
+        </div>
+        
+    </div>
+    
+    <div class="col-md-12">
+        <h3>Category Properties</h3>
+        <hr>
+    </div>
+
+    <div class="col-md-12">
+        @foreach (var pair in properties)
+        {
+            <div class="col-md-6">
+            <label>@pair.Key.ProductPropertyKeyName</label>
+            @if(pair.Key.IsMultiple)
+            {
+                foreach(var property in pair.Value)
+                {
+                    var propertyId = 
+                        current.ProductId 
+                        + "-" +
+                        property.ProductPropertyKeyId 
+                        + "-" +
+                        property.ProductPropertyValueId;
+                    <br>
+                    <label style="font-weight:normal">
+                        <input type="checkbox" 
+                               name="properties[]"
+                               @if(selectedProperties.Contains(property.ProductPropertyValueId)){<text>checked</text>}
+                               value="@propertyId">
+                        @property.ProductPropertyValueName
+                    </label>
+                }
+            }
+            else
+            {
+                <select name="properties[]" class="form-control">
+                    <option value>Not Specified</option>
+                    @foreach (var property in pair.Value)
+                    {
+                        
+                        var propertyId = 
+                            current.ProductId 
+                            + "-" +
+                            property.ProductPropertyKeyId 
+                            + "-" +
+                            property.ProductPropertyValueId;
+                        
+                        <option 
+                            @if(selectedProperties.Contains(property.ProductPropertyValueId)){<text>selected</text>}
+                            value="@propertyId">
+                            @property.ProductPropertyValueName
+                        </option>
+                    }
+                </select>
+            }
+            <hr>
+            </div>
+        }
+    </div>
+   
+    
+    <div class="col-md-12">
+        <br>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+ @* @foreach (var property in properties) *@
+    @* { *@
+    @*     <div class="form-group col-md-6"> *@
+    @*         <label>@property.Key.ProductPropertyKeyName</label> *@
+    @*         <input readonly type="text" class="form-control"  name="CategoryId" value="@current.Category.CategoryName"> *@
+    @*     </div> *@
+    @*      *@
+    @*     <div class="form-group col-md-6"> *@
+    @*         <label for="inputState">@property.Key.ProductPropertyKeyName</label> *@
+    @*         <select id="inputState" class="form-control" name="ParentCategoryId"> *@
+    @*             @foreach (var productPropertyValue in property.Value) *@
+    @*             { *@
+    @*                  *@
+    @*             } *@
+    @*         </select> *@
+    @*     </div> *@
+    @* } *@
+    @*    *@

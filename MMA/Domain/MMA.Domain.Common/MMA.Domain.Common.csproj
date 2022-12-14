@@ -32,6 +32,7 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <ItemGroup>
+      <Compile Include="Base\BaseEntity.cs" />
       <Compile Include="Category.cs" />
       <Compile Include="Customer.cs" />
       <Compile Include="LocationInMarket.cs" />
@@ -39,8 +40,8 @@
       <Compile Include="Moderator.cs" />
       <Compile Include="Product.cs" />
       <Compile Include="ProductProperty.cs" />
-      <Compile Include="PropertyKey.cs" />
-      <Compile Include="PropertyValue.cs" />
+      <Compile Include="ProductPropertyKey.cs" />
+      <Compile Include="ProductPropertyValue.cs" />
       <Compile Include="Seller.cs" />
       <Compile Include="Shop.cs" />
       <Compile Include="User.cs" />

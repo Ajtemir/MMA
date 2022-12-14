@@ -1,0 +1,43 @@
+@using System.ComponentModel.DataAnnotations
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "Product property value";
+    Layout = "~/Views/Shared/_Index.cshtml";
+    var entities = (List<ProductPropertyValue>)ViewData["entities"];
+    var headers = (List<string>)ViewData["headers"];
+    
+}
+<div class="mt-4">
+    <a href='@Url.Action("AddOrUpdate", "ProductPropertyValues", new {Area = "Common"})'>
+        <button type="button" class="btn btn-primary btn-lg">Add</button>
+    </a>
+</div>
+<br>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+      @foreach (var header in headers)
+      {
+          <th scope="col">@header</th>
+      }
+      <th scope="col">Category Name</th>
+      <th scope="col" class="text-success">Update</th>
+      <th scope="col" class="text-danger">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach (var entity in entities)
+  {
+      <tr>
+          <th scope="row">@entity.ProductPropertyValueId</th>
+          <th scope="row">@entity.ProductPropertyValueName</th>
+          <th scope="row">@entity.ProductPropertyKey.ProductPropertyKeyName</th>
+          <th scope="row">@entity.ProductPropertyKey.Category.CategoryName</th>
+          <td><a href="@Url.Action("AddOrUpdate", "ProductPropertyValues", new { Area = "Common", entityId = entity.ProductPropertyValueId })"><button type="button" class="btn btn-success d-inline-block">Update</button></a></td>
+          <td><a href="@Url.Action("Delete", "ProductPropertyValues", new { Area = "Common", entityId=entity.ProductPropertyValueId })"><button type="button" class="btn btn-danger d-inline-block">Delete</button></a></td>
+      </tr>
+  }
+  
+  </tbody>
+</table>
+

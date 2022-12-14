@@ -1,0 +1,43 @@
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var productPropertyKeys = (List<ProductPropertyKey>)ViewData["productPropertyKeys"];
+}
+
+<h2>Product Property Key</h2>
+<div class="mt-4">
+  <a href='@Url.Action("Add", "ProductPropertyKeys", new {Area = "Common"})'>
+      <button type="button" class="btn btn-primary btn-lg">Add</button>
+  </a>
+</div>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+      <th scope="col">#</th>
+      <th scope="row">Product property key name</th>
+      <th scope="row">Category name</th>
+      <th scope="row">Is Multiple</th>
+      <th scope="col" class="text-success">Update</th>
+      <th scope="col" class="text-danger">Delete</th>
+  </tr>
+  </thead>
+  <tbody>
+  @foreach (var entity in productPropertyKeys)
+  {
+      <tr>
+          <th scope="row">@entity.ProductPropertyKeyId</th>
+          <th scope="row">@entity.ProductPropertyKeyName</th>
+          <th scope="row">@entity.Category.CategoryName</th>
+          <th scope="row">
+            <input type="checkbox"
+                @if(entity.IsMultiple){<text>checked</text>}
+                readonly>
+            </th>
+          <td><a href="@Url.Action("Update", "ProductPropertyKeys", new { Area = "Common", entityId = entity.ProductPropertyKeyId })"><button type="button" class="btn btn-success d-inline-block">Update</button></a></td>
+          <td><a href="@Url.Action("Delete", "ProductPropertyKeys", new { Area = "Common", entityId=entity.ProductPropertyKeyId })"><button type="button" class="btn btn-danger d-inline-block">Delete</button></a></td>
+      </tr>
+  }
+  
+  </tbody>
+</table>

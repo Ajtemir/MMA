@@ -2,24 +2,24 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Text;
 
 namespace MMA.Domain.Common
 {
     [Table("Users",Schema = "dbo")]
-    [DataContract]
     public class User
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        [DataMember]
         public string PhoneNumber { get; set; }
-        [DataMember]
-        public string Name { get; set; }
-        [DataMember]
+        public string FirstName { get; set; }
+        [Required]
         public string Surname { get; set; }
-        [DataMember]
+        [Required]
         public string Patronymic { get; set; }
+        
+        // public ICollection<Customer> Customers { get; set; }
     }
 }

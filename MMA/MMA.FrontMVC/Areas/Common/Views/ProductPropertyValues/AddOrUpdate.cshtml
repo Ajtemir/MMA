@@ -1,0 +1,36 @@
+@using System.Activities.Statements
+@using MMA.Domain.Common
+
+@{
+    ViewBag.Title = "Product Property Keys";
+    Layout = "~/Views/Shared/_AddOrUpdate.cshtml";
+    var propertyKeys = (Dictionary<string, List<ProductPropertyKey>>)ViewData["propertyKeys"];
+    var entity = (ProductPropertyValue)ViewData["entity"] ?? new ProductPropertyValue();
+}
+<form method="POST" action="@Url.Action("AddOrUpdate", "ProductPropertyValues", new { Area = "Common" })">
+  <div class="form-row">
+    <input name="ProductPropertyValueId" value="@entity.ProductPropertyValueId" type="hidden">
+    <div class="form-group col-md-6">
+      <label for="inputEmail4">Product Value Name</label>
+      <input required type="text" class="form-control"
+             value="@entity.ProductPropertyValueName"
+             id="inputEmail4" name="ProductPropertyValueName">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="inputState">Product Key Name</label>
+      <select id="inputState" class="form-control" name="ProductPropertyKeyId">
+        @foreach (var propertyKey in propertyKeys)
+        {
+          <optgroup label="@propertyKey.Key">
+            @foreach (var option in @propertyKey.Value)
+            {
+              <option value="@option.ProductPropertyKeyId" @(entity.ProductPropertyKeyId==option.ProductPropertyKeyId?"selected":"")>@option.ProductPropertyKeyName</option>
+            }
+          </optgroup>
+        }
+      </select>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+

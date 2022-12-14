@@ -1,6 +1,6 @@
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using MMA.Contract.Common.Response;
 using MMA.Domain.Common;
 
 namespace MMA.Contract.Common
@@ -15,17 +15,20 @@ namespace MMA.Contract.Common
         [OperationContract]
         CompositeType GetDataUsingDataContract(CompositeType composite);
         [OperationContract]
-        ServiceResult<User> GetUsers();
+        ServiceResultAll<User> GetUsers();
+        
         [OperationContract]
         User GetUser();
+        
+        [OperationContract]
+        ServiceResultAll<Category> GetAllCategories();
+
+        [OperationContract]
+        ServiceResult AddCategory(Category category);
+        
+        
     }
 
-    [DataContract]
-    public class ServiceResult<T>
-    {
-        [DataMember]
-        public List<T> Entites { get; set; }
-    }
     [DataContract]
     public class CompositeType
     {

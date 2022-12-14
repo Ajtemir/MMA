@@ -1,0 +1,41 @@
+@using System.Activities.Statements
+@using MMA.Domain.Common
+@{
+    ViewBag.Title = "Product property key";
+    Layout = "~/Views/Shared/_Update.cshtml";
+    var current = (ProductPropertyKey)ViewData["current"];
+    var categories = (List<Category>)ViewData["categories"];
+}
+
+<form method="POST" action="@Url.Action("Update", "ProductPropertyKeys", new { Area = "Common" })">
+    <div class="form-row">
+        <input name="ProductPropertyKeyId" value="@current.ProductPropertyKeyId" type="hidden">
+        <div class="form-group col-md-6">
+            <label>Product Property Key Name</label>
+            <input required type="text" class="form-control" name="ProductPropertyKeyName" value="@current.ProductPropertyKeyName">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="inputState">Category Name</label>
+            <select id="inputState" class="form-control" name="CategoryId">
+                @foreach (var category in categories)
+                {
+                    <option
+                        @if(current.CategoryId==category.CategoryId){<text>selected</text>}
+                        value="@category.CategoryId">
+                        @category.CategoryName
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label>Is Multiple</label>
+            <select name="IsMultiple" class="form-control">
+            <option value="true" @if(current.IsMultiple){<text>selected</text>}>True</option>
+                <option value="false" @if(!current.IsMultiple){<text>selected</text>}>False</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+</form>
