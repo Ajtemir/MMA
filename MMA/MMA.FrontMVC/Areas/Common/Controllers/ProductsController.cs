@@ -103,7 +103,7 @@ namespace MMA.FrontMVC.Areas.Common.Controllers
                 .GroupBy(x => x)
                 .ToDictionary(x => x.Key, 
                     x => x.Key.PropertyValues);
-            
+            if (current.Price == null) throw new Exception("Price null");
             ViewData[nameof(properties)] = properties;
             ViewData[nameof(current)] = current;
             ViewData[nameof(selectedProperties)] = selectedProperties;
